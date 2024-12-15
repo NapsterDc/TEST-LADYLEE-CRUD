@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: test-ladylee-crud
+    runtime: php
+    buildCommand: |
+      composer install --no-dev --optimize-autoloader
+      npm install
+      npm run prod
+    startCommand: php artisan serve --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: APP_KEY
+        value: base64:yvvmDXBDBLgSb0nd8QQcxj1c0Jh27Kt/HG8OwvR/7TE=
+      - key: DB_CONNECTION
+        value: sqlite
